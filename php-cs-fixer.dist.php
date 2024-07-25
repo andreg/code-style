@@ -64,5 +64,3 @@ return (new PhpCsFixer\Config())
     ] )
     ->setLineEnding( "\n" )
     ->setIndent( "\t" );
-
-return ( new PhpCsFixer\Config() );

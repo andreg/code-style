@@ -1,6 +1,6 @@
 <?php
 
-require_once  __DIR__ . '/../vendor/autoload.php';
+require_once  __DIR__ . '/vendor/autoload.php';
 
 return (new PhpCsFixer\Config())
 	->setRiskyAllowed( true )
@@ -64,5 +64,3 @@ return (new PhpCsFixer\Config())
 	] )
 	->setLineEnding( "\n" )
 	->setIndent( "\t" );
-
-return (new PhpCsFixer\Config());
