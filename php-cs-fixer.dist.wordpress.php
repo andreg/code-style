@@ -6,6 +6,7 @@ return (new PhpCsFixer\Config())
 	->setRiskyAllowed( true )
 	->registerCustomFixers( [
 		new \SuperDJ\SpacesInParenthesesFixer\SpacesInParenthesesFixer(),
+		new \SuperDJ\SpacesInParenthesesFixer\SpaceAroundIfFixer(),
 	] )
 	->registerCustomFixers( new \ErickSkrauch\PhpCsFixer\Fixers() )
 	->registerCustomFixers( new \PhpCsFixerCustomFixers\Fixers() )
