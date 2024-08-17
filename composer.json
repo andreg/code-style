@@ -1,9 +1,15 @@
 {
     "require-dev": {
-        "superdj/spaces-in-parentheses-php-cs-fixer": "^1.1",
+        "andreg/spaces-in-parentheses-php-cs-fixer": "dev-main",
         "ely/php-code-style": "^1.0"
     },
     "require": {
         "friendsofphp/php-cs-fixer": "^3.8"
-    }
+    },
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@github.com:andreg/spaces-in-parentheses-php-cs-fixer.git"
+		}
+	]
 }
