@@ -6,6 +6,7 @@ return (new PhpCsFixer\Config())
 	->setRiskyAllowed( true )
 	->registerCustomFixers( [
 		new \SuperDJ\SpacesInParenthesesFixer\SpacesInParenthesesFixer(),
+		new \SuperDJ\SpacesInParenthesesFixer\SpaceAroundIfFixer()
 	] )
 	->registerCustomFixers( new \ErickSkrauch\PhpCsFixer\Fixers() )
 	->registerCustomFixers( new \PhpCsFixerCustomFixers\Fixers() )
@@ -61,6 +62,7 @@ return (new PhpCsFixer\Config())
 		'ErickSkrauch/line_break_after_statements'     => true,
 		'ErickSkrauch/multiline_if_statement_braces'   => true,
 		'ErickSkrauch/remove_class_name_method_usages' => true,
+		'Andreg/space_around_if' => true
 	] )
 	->setLineEnding( "\n" )
 	->setIndent( "\t" );
