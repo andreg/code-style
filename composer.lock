@@ -2545,12 +2545,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andreg/spaces-in-parentheses-php-cs-fixer.git",
-                "reference": "863b32cd31c519e44702e7a8fd20c29c5783e52b"
+                "reference": "18d5583d763c92fe1029d1eaf34fcf08fd98acda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andreg/spaces-in-parentheses-php-cs-fixer/zipball/863b32cd31c519e44702e7a8fd20c29c5783e52b",
-                "reference": "863b32cd31c519e44702e7a8fd20c29c5783e52b",
+                "url": "https://api.github.com/repos/andreg/spaces-in-parentheses-php-cs-fixer/zipball/18d5583d763c92fe1029d1eaf34fcf08fd98acda",
+                "reference": "18d5583d763c92fe1029d1eaf34fcf08fd98acda",
                 "shasum": ""
             },
             "require": {
@@ -2586,7 +2586,7 @@
             "support": {
                 "source": "https://github.com/andreg/spaces-in-parentheses-php-cs-fixer/tree/main"
             },
-            "time": "2024-08-17T08:07:58+00:00"
+            "time": "2024-08-17T10:33:24+00:00"
         },
         {
             "name": "ely/php-code-style",
