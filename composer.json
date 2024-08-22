@@ -1,4 +1,5 @@
 {
+	"name": "andreg/code-style",
     "require-dev": {
         "andreg/spaces-in-parentheses-php-cs-fixer": "dev-main",
         "ely/php-code-style": "^1.0"
