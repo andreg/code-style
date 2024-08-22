@@ -1,17 +1,15 @@
 {
 	"name": "andreg/code-style",
     "require-dev": {
-        "andreg/spaces-in-parentheses-php-cs-fixer": "dev-main",
         "ely/php-code-style": "^1.0"
     },
     "require": {
         "friendsofphp/php-cs-fixer": "^3.8"
     },
-	"minimum-stability": "dev",
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@github.com:andreg/spaces-in-parentheses-php-cs-fixer.git"
-		}
-	]
+	"autoload": {
+        "psr-4": {
+            "SuperDJ\\SpacesInParenthesesFixer\\": "src"
+        }
+    },
+	"minimum-stability": "dev"
 }

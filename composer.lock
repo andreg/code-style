@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "743b8fc89a3e2fb7de8d31c26e9c6008",
+    "content-hash": "7e398ff1e8c62c28ca8c44e7ccc74136",
     "packages": [
         {
             "name": "clue/ndjson-react",
@@ -157,12 +157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "4b9538fd51774ac890334b7909900c79a9417e11"
+                "reference": "2d9c5362749c7e12c0455070c92d1f04449a834c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/4b9538fd51774ac890334b7909900c79a9417e11",
-                "reference": "4b9538fd51774ac890334b7909900c79a9417e11",
+                "url": "https://api.github.com/repos/composer/semver/zipball/2d9c5362749c7e12c0455070c92d1f04449a834c",
+                "reference": "2d9c5362749c7e12c0455070c92d1f04449a834c",
                 "shasum": ""
             },
             "require": {
@@ -231,7 +231,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-22T10:16:18+00:00"
+            "time": "2024-08-22T13:05:36+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -2562,55 +2562,6 @@
     ],
     "packages-dev": [
         {
-            "name": "andreg/spaces-in-parentheses-php-cs-fixer",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/andreg/spaces-in-parentheses-php-cs-fixer.git",
-                "reference": "635fffe0107ada2728e83a0df80bcf4ed77aafe1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/andreg/spaces-in-parentheses-php-cs-fixer/zipball/635fffe0107ada2728e83a0df80bcf4ed77aafe1",
-                "reference": "635fffe0107ada2728e83a0df80bcf4ed77aafe1",
-                "shasum": ""
-            },
-            "require": {
-                "friendsofphp/php-cs-fixer": "^3.0.0",
-                "php": "^8.0 || ^8.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SuperDJ\\SpacesInParenthesesFixer\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "SuperDJ\\SpacesInParenthesesFixer\\Tests\\": "tests"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "SuperDJ",
-                    "email": "super.derkjan@gmail.com"
-                }
-            ],
-            "description": "A custom PHP CS Fixer to add or remove spaces in parentheses",
-            "homepage": "https://github.com/SuperDJ/spaces-in-parentheses-php-cs-fixer",
-            "support": {
-                "source": "https://github.com/andreg/spaces-in-parentheses-php-cs-fixer/tree/main"
-            },
-            "time": "2024-08-22T12:40:18+00:00"
-        },
-        {
             "name": "ely/php-code-style",
             "version": "1.0.1",
             "source": {
@@ -2783,9 +2734,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "andreg/spaces-in-parentheses-php-cs-fixer": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
