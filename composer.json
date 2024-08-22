@@ -1,5 +1,6 @@
 {
 	"name": "andreg/code-style",
+	"version": "1.0.0",
     "require-dev": {
         "ely/php-code-style": "^1.0"
     },
