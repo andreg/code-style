@@ -10,6 +10,17 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 class SpaceInsideSquareBracketsFixer extends AbstractFixer
 {
+	/**
+     * {@inheritdoc}
+     *
+     * Must run before FunctionToConstantFixer.
+     * Must run after CombineConsecutiveIssetsFixer, CombineNestedDirnameFixer, LambdaNotUsedImportFixer, NoUselessSprintfFixer, PowToExponentiationFixer.
+     */
+    public function getPriority(): int
+    {
+        return 100;
+    }
+
 	public function getDefinition(): FixerDefinitionInterface
 	{
 		return new \PhpCsFixer\FixerDefinition\FixerDefinition(
@@ -25,24 +36,45 @@ class SpaceInsideSquareBracketsFixer extends AbstractFixer
 
 	public function isCandidate(Tokens $tokens):bool
 	{
-		return $tokens->isTokenKindFound( CT::T_ARRAY_SQUARE_BRACE_OPEN ) || $tokens->isTokenKindFound( CT::T_ARRAY_SQUARE_BRACE_CLOSE );
+		return
+			$tokens->isTokenKindFound( CT::T_ARRAY_SQUARE_BRACE_OPEN ) ||
+			$tokens->isTokenKindFound( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) ||
+			$tokens->isTokenKindFound( '[' ) ||
+			$tokens->isTokenKindFound( ']' );
 	}
 
 	public function applyFix(\SplFileInfo $file, Tokens $tokens):void
 	{
 		foreach ($tokens as $index => $token) {
-			if ( ! $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) && ! $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) ) {
+			if (
+				! $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) &&
+				! $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) &&
+				! $token->getContent() == '[' &&
+				! $token->getContent() == ']'
+			) {
 				continue;
 			}
 
-			if ( $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) ) {
-				if (!$tokens[$index + 1]->isWhitespace() && !$tokens[$index + 1]->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_CLOSE )) {
+			if ( $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) || $token->getContent() == '[' ) {
+				if (
+					!$tokens[$index + 1]->isWhitespace() &&
+					!(
+						$tokens[$index + 1]->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) ||
+						$tokens[$index + 1]->getContent() == ']'
+						)
+				) {
 					$tokens->insertAt($index + 1, new Token([ T_WHITESPACE, ' ' ]));
 				}
 			}
 
-			if ( $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) ) {
-				if (!$tokens[$index - 1]->isWhitespace() && !$tokens[$index - 1]->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN )) {
+			if ( $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) || $token->getContent() == ']' ) {
+				if (
+					!$tokens[$index - 1]->isWhitespace() &&
+					(
+						!$tokens[$index - 1]->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) &&
+						!$tokens[$index - 1]->getContent() == '['
+					)
+				) {
 					$tokens->insertAt($index, new Token([ T_WHITESPACE, ' ' ]));
 				}
 			}
