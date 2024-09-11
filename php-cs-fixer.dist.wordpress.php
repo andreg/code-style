@@ -10,6 +10,7 @@ return ( new PhpCsFixer\Config() )
 		new \SuperDJ\SpacesInParenthesesFixer\SpacesInParenthesesFixer(),
 		new \SuperDJ\SpacesInParenthesesFixer\SpaceAroundIfFixer(),
 		new \SuperDJ\SpacesInParenthesesFixer\SpaceInsideSquareBracketsFixer(),
+		new \SuperDJ\SpacesInParenthesesFixer\AddSpacesAroundConcatenationFixer(),
 	] )
 	->registerCustomFixers( new \ErickSkrauch\PhpCsFixer\Fixers() )
 	->registerCustomFixers( new \PhpCsFixerCustomFixers\Fixers() )
@@ -70,6 +71,7 @@ return ( new PhpCsFixer\Config() )
 		"ErickSkrauch/remove_class_name_method_usages" => true,
 		"Andreg/space_around_if"                       => true,
 		"Andreg/space_inside_square_brackets"          => true,
+		"Andreg/space_around_concatenation"            => true,
 	] )
 	->setLineEnding( "\n" )
 	->setIndent( "\t" );
