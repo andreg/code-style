@@ -38,7 +38,7 @@ class AddSpacesAroundConcatenationFixer extends AbstractFixer {
 				if ( ! $tokens[ $prevIndex ]->isWhitespace() ) {
 					// Insert a space before the concatenation dot
 					$tokens->insertAt( $index, new Token( [ T_WHITESPACE, ' ' ] ) );
-					$index++; // Shift index since we just inserted a token
+					$nextIndex++; // Shift index since we just inserted a token
 				} elseif ( $tokens[ $prevIndex ]->isWhitespace() && ' ' !== $tokens[ $prevIndex ]->getContent() ) {
 					// Normalize to exactly one space before the dot
 					$tokens[ $prevIndex ] = new Token( [ T_WHITESPACE, ' ' ] );
