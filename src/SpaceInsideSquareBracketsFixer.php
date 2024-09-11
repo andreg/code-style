@@ -10,16 +10,6 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 class SpaceInsideSquareBracketsFixer extends AbstractFixer
 {
-	/**
-     * {@inheritdoc}
-     *
-     * Must run before FunctionToConstantFixer.
-     * Must run after CombineConsecutiveIssetsFixer, CombineNestedDirnameFixer, LambdaNotUsedImportFixer, NoUselessSprintfFixer, PowToExponentiationFixer.
-     */
-    public function getPriority(): int
-    {
-        return 100;
-    }
 
 	public function getDefinition(): FixerDefinitionInterface
 	{
