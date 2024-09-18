@@ -17,9 +17,9 @@ return ( new PhpCsFixer\Config() )
 	->setRules( [
 		"@PSR12"                            => true,
 		"indentation_type"                  => true,
-		"array_syntax"                      => [ "syntax" => "short"],
+		"array_syntax"                      => [ "syntax" => "short" ],
 		"whitespace_after_comma_in_array"   => true,
-		"ordered_imports"                   => [ "sort_algorithm" => "alpha"],
+		"ordered_imports"                   => [ "sort_algorithm" => "alpha" ],
 		"no_unused_imports"                 => true,
 		"not_operator_with_successor_space" => true,
 		"trailing_comma_in_multiline"       => true,
@@ -35,7 +35,7 @@ return ( new PhpCsFixer\Config() )
 			],
 		],
 		"blank_line_before_statement" => [
-			"statements" => [ "break", "continue", "declare", "return", "throw", "try"],
+			"statements" => [ "break", "continue", "declare", "return", "throw", "try" ],
 		],
 		"phpdoc_single_line_var_spacing" => true,
 		"phpdoc_var_without_name"        => true,
@@ -49,15 +49,12 @@ return ( new PhpCsFixer\Config() )
 			"keep_multiple_spaces_after_comma" => true,
 		],
 		"single_trait_insert_per_statement" => true,
-		"function_declaration"              => [
-			"closure_function_spacing" => "none",
-		],
-		"yoda_style"            => true,
-		"curly_braces_position" => [
+		"yoda_style"                        => true,
+		"curly_braces_position"             => [
 			"classes_opening_brace"   => "same_line",
 			"functions_opening_brace" => "same_line",
 		],
-		"SuperDJ/spaces_in_parentheses"           => [ "space" => "spaces"],
+		"SuperDJ/spaces_in_parentheses"           => [ "space" => "spaces" ],
 		"ErickSkrauch/align_multiline_parameters" => [
 			"variables" => false,
 			"defaults"  => false,
