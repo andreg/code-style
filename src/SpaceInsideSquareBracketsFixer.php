@@ -10,6 +10,8 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 class SpaceInsideSquareBracketsFixer extends AbstractFixer {
 
+	public const T_ATTRIBUTE = 387;
+
 	public function getDefinition(): FixerDefinitionInterface {
 		return new \PhpCsFixer\FixerDefinition\FixerDefinition(
 			'Ensure there are spaces inside square brackets token.',
@@ -26,7 +28,7 @@ class SpaceInsideSquareBracketsFixer extends AbstractFixer {
 			$tokens->isTokenKindFound( CT::T_ARRAY_SQUARE_BRACE_OPEN ) ||
 			$tokens->isTokenKindFound( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) ||
 			$tokens->isTokenKindFound( '[' ) ||
-			$tokens->isTokenKindFound( 387 ) ||
+			$tokens->isTokenKindFound( self::T_ATTRIBUTE ) ||
 			$tokens->isTokenKindFound( ']' );
 	}
 
@@ -36,7 +38,7 @@ class SpaceInsideSquareBracketsFixer extends AbstractFixer {
 				! $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) &&
 				! $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) &&
 				'[' == ! $token->getContent() &&
-				387 == ! $token->getId() &&
+				self::T_ATTRIBUTE == ! $token->getId() &&
 				']' == ! $token->getContent()
 			) {
 				continue;
