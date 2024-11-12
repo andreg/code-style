@@ -1,14 +1,14 @@
 {
 	"name": "andreg/code-style",
 	"version": "1.0.2",
-    "require": {
+	"require": {
 		"ely/php-code-style": "^1.0",
-        "friendsofphp/php-cs-fixer": "^3.8"
-    },
+		"friendsofphp/php-cs-fixer": "^3"
+	},
 	"autoload": {
-        "psr-4": {
-            "SuperDJ\\SpacesInParenthesesFixer\\": "src"
-        }
-    },
+		"psr-4": {
+			"SuperDJ\\SpacesInParenthesesFixer\\": "src"
+		}
+	},
 	"minimum-stability": "dev"
 }

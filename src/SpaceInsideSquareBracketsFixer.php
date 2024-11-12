@@ -26,6 +26,7 @@ class SpaceInsideSquareBracketsFixer extends AbstractFixer {
 			$tokens->isTokenKindFound( CT::T_ARRAY_SQUARE_BRACE_OPEN ) ||
 			$tokens->isTokenKindFound( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) ||
 			$tokens->isTokenKindFound( '[' ) ||
+			$tokens->isTokenKindFound( 387 ) ||
 			$tokens->isTokenKindFound( ']' );
 	}
 
@@ -35,12 +36,13 @@ class SpaceInsideSquareBracketsFixer extends AbstractFixer {
 				! $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) &&
 				! $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_CLOSE ) &&
 				'[' == ! $token->getContent() &&
+				387 == ! $token->getId() &&
 				']' == ! $token->getContent()
 			) {
 				continue;
 			}
 
-			if ( $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) || '[' == $token->getContent() ) {
+			if ( $token->isGivenKind( CT::T_ARRAY_SQUARE_BRACE_OPEN ) || 387 == $token->getId() || '[' == $token->getContent() ) {
 				if (
 					! $tokens[ $index + 1 ]->isWhitespace() &&
 					! (
