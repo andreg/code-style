@@ -1,8 +1,6 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 // Inspired from https://gist.github.com/vuon9/be16429f751e12f72e220c18777d9bc7
 //
 // This script will
