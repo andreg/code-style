@@ -60,8 +60,8 @@ if ('' === $whichBinary) {
 }
 
 $configFile = match($argv[1]) {
-	'wordpress' => 'php-cs-fixer.dist.wordpress.php',
-	default => 'php-cs-fixer.dist.php'
+	'wordpress' => __DIR__ . '/../php-cs-fixer.dist.wordpress.php',
+	default => __DIR__ . '/../php-cs-fixer.dist.php'
 };
 
 $cmd = sprintf('php-cs-fixer --config="%s" --quiet fix %s', $configFile, $tmpFile);
