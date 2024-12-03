@@ -58,7 +58,9 @@ if ('' === $whichBinary) {
     error_exit('php-cs-fixer binary not found in $PATH folders');
 }
 
-$cmd = sprintf('php-cs-fixer --quiet fix %s', $tmpFile);
+$configFile = realpath(__DIR__ . '/../php-cs-fixer.dist.php');
+
+$cmd = sprintf('php-cs-fixer --config="%s" --quiet fix %s', $configFile, $tmpFile);
 
 // Run the command
 
