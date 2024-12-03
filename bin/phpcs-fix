@@ -59,7 +59,10 @@ if ('' === $whichBinary) {
     error_exit('php-cs-fixer binary not found in $PATH folders');
 }
 
-$configFile = realpath(__DIR__ . '/../php-cs-fixer.dist.php');
+$configFile = match($argv[1]) {
+	'wordpress' => 'php-cs-fixer.dist.wordpress.php',
+	default => 'php-cs-fixer.dist.php'
+};
 
 $cmd = sprintf('php-cs-fixer --config="%s" --quiet fix %s', $configFile, $tmpFile);
 
