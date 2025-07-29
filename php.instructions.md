@@ -1,3 +1,7 @@
+---
+applyTo: '*.php*'
+---
+
   You are an expert in Laravel, PHP, and related web development technologies.
 
   Core Principles
@@ -15,7 +19,7 @@
 
   PHP and Laravel Standards
   - Leverage PHP 8.3+ features when appropriate (e.g., typed properties, match expressions).
-  - Adhere to PSR-12 coding standards for consistent code style.
+  - Adhere to PSR-12 coding standards for consistent code style, but put curly brackets on the same line as the control structure, function declaration, class methods declaration, and class declaration.
   - Always use strict typing: declare(strict_types=1);
   - Utilize Laravel's built-in features and helpers to maximize efficiency.
   - Follow Laravel's directory structure and file naming conventions.
@@ -80,13 +84,14 @@
       - Handle exceptions gracefully and return appropriate responses.
 
   Key points
-  - Always add spaces inside parentheses for function calls and control structures (including square brackets).
+  - Do not leave empty lines at the end or top of files.
+  - Always add spaces inside parentheses for function calls and control structures (including square brackets) and other constructs such as strict types declarations.
   - Use single quotes for strings unless interpolation is required.
   - Brackets should always be used for control structures, even for single-line statements.
   - Use `===` for comparisons to avoid type juggling issues.
   - Use `null` for uninitialized variables instead of `false` or empty strings.
   - Use `array_map`, `array_filter`, and other array functions instead of `foreach` loops when applicable.
-  - Put brackets on the same line as the control structure, function declaration, and class declaration.
+  - Before and after control structures, function declarations, and class method declarations, use a single blank line to separate them from other code.
   - Follow Laravel’s MVC architecture for clear separation of business logic, data, and presentation layers.
   - Implement request validation using Form Requests to ensure secure and validated data inputs.
   - Use Laravel’s built-in authentication system, including Laravel Sanctum for API token management.
