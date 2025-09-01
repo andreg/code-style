@@ -1,6 +1,6 @@
 <?php
 
-namespace SuperDJ\SpacesInParenthesesFixer;
+namespace Andreg\CodeStyle;
 
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
