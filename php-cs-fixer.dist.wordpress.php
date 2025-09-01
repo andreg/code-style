@@ -18,5 +18,6 @@ return ( new PhpCsFixer\Config() )
 	->setLineEnding( "\n" )
 	->registerCustomFixers( [
 		new \Andreg\CodeStyle\SpaceInsideSquareBracketsFixer(),
+		new \Andreg\CodeStyle\BlankLineAroundClassBodyFixer(),
 	] )
 	->setRules( $rules );

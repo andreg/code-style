@@ -1,7 +1,8 @@
 <?php
 
 return [
-	'Andreg/space_inside_square_brackets'        => true,
+	'Andreg/blank_line_around_class_body'        => true,
+	'Andreg/space_inside_square_brackets'        => false,
 	'align_multiline_comment'                    => [
 		'comment_type' => 'phpdocs_like',
 	],
