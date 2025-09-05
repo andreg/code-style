@@ -41,7 +41,9 @@ class BlankLineAroundTraitBodyFixer extends AbstractFixer {
 					}
 				}
 				else {
-					$tokens->insertAt( $openBrace + 1, new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n" ] ) );
+					if ( substr_count( $tokens[ $openBrace + 1 ]->getContent(), "\n" ) < 2 ) {
+						$tokens->insertAt( $openBrace + 1, new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n" ] ) );
+					}
 				}
 
 				// Ensure one blank line before closing brace

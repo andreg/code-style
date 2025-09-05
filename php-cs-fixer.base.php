@@ -1,10 +1,6 @@
 <?php
 
 return [
-	'Andreg/blank_line_around_class_body'        => true,
-	'Andreg/blank_line_around_interface_body'    => true,
-	'Andreg/blank_line_around_trait_body'    => true,
-	'Andreg/space_inside_square_brackets'        => true,
 	'align_multiline_comment'                    => [
 		'comment_type' => 'phpdocs_like',
 	],
@@ -230,4 +226,8 @@ return [
 		'ensure_single_space' => true,
 	],
 	'yoda_style'                                 => true,
+	'Andreg/blank_line_around_class_body'        => true,
+	// 'Andreg/blank_line_around_interface_body'    => true,
+	// 'Andreg/blank_line_around_trait_body'        => true,
+	'Andreg/space_inside_square_brackets'        => true,
 ];

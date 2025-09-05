@@ -31,21 +31,23 @@ class BlankLineAroundClassBodyFixer extends AbstractFixer {
 				$closeBrace = $tokens->findBlockEnd( Tokens::BLOCK_TYPE_CURLY_BRACE, $openBrace );
 
 				// Ensure one blank line after opening brace
-				$next       = $tokens->getNextNonWhitespace( $openBrace );
+				$next = $tokens->getNextNonWhitespace( $openBrace );
 
 				if ( $tokens[ $next ]->isGivenKind( T_WHITESPACE ) ) {
 					$content = $tokens[ $next ]->getContent();
 
-					if ( substr_count( $content, "\n" ) < 1 ) {
+					if ( substr_count( $content, "\n" ) < 2 ) {
 						$tokens[ $next ]->setContent( "\n" . ltrim( $content ) );
 					}
 				}
 				else {
-					$tokens->insertAt( $openBrace + 1, new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n" ] ) );
+					if ( substr_count( $tokens[ $openBrace + 1 ]->getContent(), "\n" ) < 2 ) {
+						$tokens->insertAt( $openBrace + 1, new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n" ] ) );
+					}
 				}
 
 				// Ensure one blank line before closing brace
-				$prev       = $tokens->getPrevNonWhitespace( $closeBrace );
+				$prev = $tokens->getPrevNonWhitespace( $closeBrace );
 
 				if ( $tokens[ $prev ]->isGivenKind( T_WHITESPACE ) ) {
 					$content = $tokens[ $prev ]->getContent();
