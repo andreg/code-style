@@ -19,5 +19,7 @@ return ( new PhpCsFixer\Config() )
 	->registerCustomFixers( [
 		new \Andreg\CodeStyle\SpaceInsideSquareBracketsFixer(),
 		new \Andreg\CodeStyle\BlankLineAroundClassBodyFixer(),
+		new \Andreg\CodeStyle\BlankLineAroundInterfaceBodyFixer(),
+		new \Andreg\CodeStyle\BlankLineAroundTraitBodyFixer(),
 	] )
 	->setRules( $rules );

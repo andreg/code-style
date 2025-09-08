@@ -6,26 +6,26 @@ use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Tokens;
 
-class BlankLineAroundClassBodyFixer extends AbstractFixer {
+class BlankLineAroundTraitBodyFixer extends AbstractFixer {
 
 	public function getDefinition(): FixerDefinitionInterface {
 		return new \PhpCsFixer\FixerDefinition\FixerDefinition(
-			'Ensure there is one blank line before and after the class body.',
+			'Ensure there is one blank line before and after the trait body.',
 			[]
 		);
 	}
 
 	public function getName(): string {
-		return 'Andreg/blank_line_around_class_body';
+		return 'Andreg/blank_line_around_trait_body';
 	}
 
 	public function isCandidate( Tokens $tokens ): bool {
-		return $tokens->isTokenKindFound( T_CLASS );
+		return $tokens->isTokenKindFound( T_TRAIT );
 	}
 
 	public function applyFix( \SplFileInfo $file, Tokens $tokens ): void {
 		for ( $index = 0; $index < $tokens->count(); $index++ ) {
-			if ( $tokens[ $index ]->isGivenKind( T_CLASS ) ) {
+			if ( $tokens[ $index ]->isGivenKind( T_TRAIT ) ) {
 				// Find the opening and closing curly braces of the class
 				$openBrace  = $tokens->getNextTokenOfKind( $index, [ '{' ] );
 				$closeBrace = $tokens->findBlockEnd( Tokens::BLOCK_TYPE_CURLY_BRACE, $openBrace );
@@ -36,7 +36,7 @@ class BlankLineAroundClassBodyFixer extends AbstractFixer {
 				if ( $tokens[ $next ]->isGivenKind( T_WHITESPACE ) ) {
 					$content = $tokens[ $next ]->getContent();
 
-					if ( substr_count( $content, "\n" ) < 2 ) {
+					if ( substr_count( $content, "\n" ) < 1 ) {
 						$tokens[ $next ]->setContent( "\n" . ltrim( $content ) );
 					}
 				}
