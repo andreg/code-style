@@ -12,7 +12,7 @@ class SpaceInsideSquareBracketsFixer extends AbstractFixer {
 
 	public function getDefinition(): FixerDefinitionInterface {
 		return new \PhpCsFixer\FixerDefinition\FixerDefinition(
-			'Ensure there are spaces inside square brackets token.',
+			'Ensure there is exactly one space inside square brackets for single-line arrays and attributes.',
 			[]
 		);
 	}
@@ -74,13 +74,26 @@ class SpaceInsideSquareBracketsFixer extends AbstractFixer {
 
 		$nextToken = $tokens[ $index + 1 ];
 
-		// Don't add space if already has whitespace or if it's an empty array/attribute
-		if ( $nextToken->isWhitespace() || $this->isClosingBracket( $nextToken ) ) {
+		// Don't add space if it's an empty array/attribute
+		if ( $this->isClosingBracket( $nextToken ) ) {
 			return;
 		}
 
-		// Only add space for single-line constructs
-		if ( $this->isSingleLine( $tokens, $index ) ) {
+		// Only process single-line constructs
+		if ( ! $this->isSingleLine( $tokens, $index ) ) {
+			return;
+		}
+
+		// If next token is whitespace, normalize it to single space
+		if ( $nextToken->isWhitespace() ) {
+			// Check if the whitespace contains newlines (should be skipped for single-line check above, but extra safety)
+			if ( false !== strpos( $nextToken->getContent(), "\n" ) ) {
+				return;
+			}
+			// Replace multiple spaces with single space
+			$tokens[ $index + 1 ] = new Token( [ T_WHITESPACE, ' ' ] );
+		} else {
+			// No whitespace found, add single space
 			$tokens->insertAt( $index + 1, new Token( [ T_WHITESPACE, ' ' ] ) );
 		}
 	}
@@ -93,13 +106,26 @@ class SpaceInsideSquareBracketsFixer extends AbstractFixer {
 
 		$prevToken = $tokens[ $index - 1 ];
 
-		// Don't add space if already has whitespace or if it's an empty array/attribute
-		if ( $prevToken->isWhitespace() || $this->isOpeningBracket( $prevToken ) ) {
+		// Don't add space if it's an empty array/attribute
+		if ( $this->isOpeningBracket( $prevToken ) ) {
 			return;
 		}
 
-		// Only add space for single-line constructs
-		if ( $this->isSingleLine( $tokens, $index ) ) {
+		// Only process single-line constructs
+		if ( ! $this->isSingleLine( $tokens, $index ) ) {
+			return;
+		}
+
+		// If previous token is whitespace, normalize it to single space
+		if ( $prevToken->isWhitespace() ) {
+			// Check if the whitespace contains newlines (should be skipped for single-line check above, but extra safety)
+			if ( false !== strpos( $prevToken->getContent(), "\n" ) ) {
+				return;
+			}
+			// Replace multiple spaces with single space
+			$tokens[ $index - 1 ] = new Token( [ T_WHITESPACE, ' ' ] );
+		} else {
+			// No whitespace found, add single space
 			$tokens->insertAt( $index, new Token( [ T_WHITESPACE, ' ' ] ) );
 		}
 	}
