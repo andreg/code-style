@@ -26,38 +26,44 @@ class BlankLineAroundTraitBodyFixer extends AbstractFixer {
 	public function applyFix( \SplFileInfo $file, Tokens $tokens ): void {
 		for ( $index = 0; $index < $tokens->count(); $index++ ) {
 			if ( $tokens[ $index ]->isGivenKind( T_TRAIT ) ) {
-				// Find the opening and closing curly braces of the class
+				// Find the opening and closing curly braces of the trait
 				$openBrace  = $tokens->getNextTokenOfKind( $index, [ '{' ] );
 				$closeBrace = $tokens->findBlockEnd( Tokens::BLOCK_TYPE_CURLY_BRACE, $openBrace );
 
-				// Ensure one blank line after opening brace
-				$next = $tokens->getNextNonWhitespace( $openBrace );
+				// Ensure exactly one blank line after opening brace
+				$nextIndex = $openBrace + 1;
 
-				if ( $tokens[ $next ]->isGivenKind( T_WHITESPACE ) ) {
-					$content = $tokens[ $next ]->getContent();
+				if ( $nextIndex < $tokens->count() && $tokens[ $nextIndex ]->isWhitespace() ) {
+					$content  = $tokens[ $nextIndex ]->getContent();
+					$newlines = substr_count( $content, "\n" );
 
-					if ( substr_count( $content, "\n" ) < 1 ) {
-						$tokens[ $next ]->setContent( "\n" . ltrim( $content ) );
+					// We want exactly 2 newlines (one for the line break, one for the blank line)
+					if ( 2 !== $newlines ) {
+						// Find the indentation after the last newline
+						$lastNewlinePos       = strrpos( $content, "\n" );
+						$indentation          = false !== $lastNewlinePos ? substr( $content, $lastNewlinePos + 1 ) : '';
+						$tokens[ $nextIndex ] = new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n\n" . $indentation ] );
 					}
 				}
 				else {
-					if ( substr_count( $tokens[ $openBrace + 1 ]->getContent(), "\n" ) < 2 ) {
-						$tokens->insertAt( $openBrace + 1, new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n" ] ) );
-					}
+					$tokens->insertAt( $nextIndex, new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n\n\t" ] ) );
 				}
 
-				// Ensure one blank line before closing brace
-				$prev = $tokens->getPrevNonWhitespace( $closeBrace );
+				// Ensure exactly one blank line before closing brace
+				$prevIndex = $closeBrace - 1;
 
-				if ( $tokens[ $prev ]->isGivenKind( T_WHITESPACE ) ) {
-					$content = $tokens[ $prev ]->getContent();
+				if ( $prevIndex >= 0 && $tokens[ $prevIndex ]->isWhitespace() ) {
+					$content  = $tokens[ $prevIndex ]->getContent();
+					$newlines = substr_count( $content, "\n" );
 
-					if ( substr_count( $content, "\n" ) < 1 ) {
-						$tokens[ $prev ]->setContent( rtrim( $content ) . "\n" );
+					// We want exactly 2 newlines (one for the line break, one for the blank line)
+					if ( 2 !== $newlines ) {
+						// Find the indentation before the closing brace (should be no indentation)
+						$tokens[ $prevIndex ] = new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n\n" ] );
 					}
 				}
 				else {
-					$tokens->insertAt( $closeBrace, new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n" ] ) );
+					$tokens->insertAt( $closeBrace, new \PhpCsFixer\Tokenizer\Token( [ T_WHITESPACE, "\n\n" ] ) );
 				}
 			}
 		}
