@@ -113,12 +113,12 @@ return [
 	'lowercase_static_reference'                 => true,
 	'magic_constant_casing'                      => true,
 	'magic_method_casing'                        => true,
-	'method_argument_space'                      => [
-		'keep_multiple_spaces_after_comma' => false,
+	// 'method_argument_space'                      => [
+		// 'keep_multiple_spaces_after_comma' => false,
 		// 'on_multiline'                     => 'ensure_fully_multiline',
-		'attribute_placement'              => 'ignore',
-		'after_heredoc'                    => true,
-	],
+		// 'attribute_placement'              => 'ignore',
+		// 'after_heredoc'                    => true,
+	// ],
 	'multiline_comment_opening_closing'          => true,
 	'multiline_promoted_properties'              => [
 		'minimum_number_of_parameters' => 1,
