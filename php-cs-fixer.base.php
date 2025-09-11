@@ -115,7 +115,7 @@ return [
 	'magic_method_casing'                        => true,
 	'method_argument_space'                      => [
 		'keep_multiple_spaces_after_comma' => false,
-		'on_multiline'                     => 'ensure_fully_multiline',
+		// 'on_multiline'                     => 'ensure_fully_multiline',
 		'attribute_placement'              => 'ignore',
 		'after_heredoc'                    => true,
 	],
