@@ -16,6 +16,7 @@ $rules[ 'array_syntax' ] = [
 return ( new PhpCsFixer\Config() )
 	->setIndent( "\t" )
 	->setLineEnding( "\n" )
+	->setParallelConfig( PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect() )
 	->registerCustomFixers( [
 		new \Andreg\CodeStyle\SpaceInsideSquareBracketsFixer(),
 		new \Andreg\CodeStyle\BlankLineAroundClassBodyFixer(),
