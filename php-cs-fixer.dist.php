@@ -17,5 +17,6 @@ return ( new PhpCsFixer\Config() )
 		new \Andreg\CodeStyle\BlankLineAroundClassBodyFixer(),
 		new \Andreg\CodeStyle\BlankLineAroundInterfaceBodyFixer(),
 		new \Andreg\CodeStyle\BlankLineAroundTraitBodyFixer(),
+		new \Andreg\CodeStyle\BlankLineAroundEnumBodyFixer(),
 	] )
 	->setRules( require __DIR__ . '/php-cs-fixer.base.php' );
