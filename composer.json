@@ -1,6 +1,6 @@
 {
 	"name": "andreg/code-style",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"require": {
 		"friendsofphp/php-cs-fixer": "^3"
 	},
