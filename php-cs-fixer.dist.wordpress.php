@@ -17,6 +17,7 @@ return ( new PhpCsFixer\Config() )
 	->setIndent( "\t" )
 	->setLineEnding( "\n" )
 	->setParallelConfig( PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect() )
+	->setUnsupportedPhpVersionAllowed( true )
 	->registerCustomFixers( [
 		new \Andreg\CodeStyle\SpaceInsideSquareBracketsFixer(),
 		new \Andreg\CodeStyle\BlankLineAroundClassBodyFixer(),
